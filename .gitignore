@@ -1,0 +1,5 @@
+#Excluding node modules
+node_modules/*
+
+#Excluding webstorm folder
+.idea/*
