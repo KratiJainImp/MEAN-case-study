@@ -1,0 +1,44 @@
+<!--   File no more in use and hence commented to avoid confusion
+
+<div class="modal-header">
+    <h3 class="modal-title" ng-if="!addStatusCtrl.isEditMode">Add Status</h3>
+    <h3 class="modal-title" ng-if="addStatusCtrl.isEditMode">Edit Status - {{addStatusCtrl.statusDate}} </h3>
+</div>
+<div class="modal-body">
+
+    <p ng-if="!addStatusCtrl.isEditMode">Date: <input type="text" ng-model="addStatusCtrl.statusDate"></p>
+
+    <table class="status-table">
+        <thead>
+        <td>Name</td>
+        <td>Today</td>
+        <td>Tomorrow</td>
+        <td>impediments</td>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="status in addStatusCtrl.statusArray">
+
+            <td><a href="#" editable-text="status.name">{{ status.name || 'empty' }}</a></td>
+            <td><a href="#" editable-text="status.todayStatus">{{ status.todayStatus || 'empty' }}</a></td>
+            <td><a href="#" editable-text="status.tomorrowStatus">{{ status.tomorrowStatus || 'empty' }}</a></td>
+            <td><a href="#" editable-text="status.impediments">{{ status.impediments || 'empty' }}</a></td>
+        </tr>
+
+
+        <tr class="add-status-row">
+            <td><input type="text" ng-model="addStatusCtrl.newStatusRow.name"></td>
+            <td><input type="text" ng-model="addStatusCtrl.newStatusRow.todayStatus"></td>
+            <td><input type="text" ng-model="addStatusCtrl.newStatusRow.tomorrowStatus"></td>
+            <td><input type="text" ng-model="addStatusCtrl.newStatusRow.impediments"></td>
+            <td ng-click="addStatusCtrl.addStatusRow()">+</td>
+        </tr>
+        <tr></tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    &lt;!&ndash;TODO: disable button  &ndash;&gt;
+    <button class="btn btn-primary" type="button" ng-click="addStatusCtrl.addStatusBoard()" ng-disabled="addStatusCtrl.statusArray.length ==0">Add Board</button>
+    <button class="btn btn-warning" type="button" ng-click="addStatusCtrl.cancel()">Cancel</button>
+</div>-->

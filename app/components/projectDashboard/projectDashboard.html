@@ -1,0 +1,29 @@
+<section class="container ng-scope">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h3 class="panel-title">Project Dashboard</h3></div>
+        <div class="panel-body">
+            <div class="col-lg-12">
+                <div class="col-lg-8" ng-if="showAlert" ng-class="alertClass">{{alertMsg}}</div>
+                <input type="text" placeholder="Search project" ng-model="searchText" class="pull-right col-lg-3">
+            </div>
+
+            <div class="col-lg-3 project-board" ng-click="projectDashboard.openProjectStatusBoard(projectBoard.projectTitle)"
+                 ng-repeat="projectBoard in projectDashboard.projectBoardArray | filter:searchText" track by $index>
+                <span class="project-title">{{projectBoard.projectTitle}}</span>
+                <img src="images/edit.jpg" class="edit-project-icon"
+                     ng-click="projectDashboard.editProjectBoard(projectBoard,$index); $event.stopPropagation();">
+                <img src="images/images.png" class="edit-project-icon"
+                     ng-click="projectDashboard.deleteProjectBoard(projectBoard.projectTitle); $event.stopPropagation();">
+
+                <p class="project-desc pull-left">{{projectBoard.projectDesc}}</p>
+
+            </div>
+            <div class="col-lg-3 project-board" ng-click="projectDashboard.createProjectBoard()">
+                <!-- <img class="col-lg-12 add-proj-img" src="images/add1.jpg" style="">-->
+                <span class="col-lg-12 glyphicon glyphicon-plus add-proj-icon"></span>
+                <span class="col-lg-12">Create New Project</span>
+            </div>
+        </div>
+    </div>
+</section>
+

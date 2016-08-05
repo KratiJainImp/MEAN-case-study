@@ -1,0 +1,17 @@
+{
+  "name": "MEAN-Stack",
+  "version": "0.0.0",
+  "description": "MEAN Stack",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": "",
+  "author": "Vaibhaw Gupta",
+  "license": "BSD",
+  "dependencies": {
+    "express": "4.8.7",
+	"body-parser": "*",
+	"mongodb": "*"
+  }
+}

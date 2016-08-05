@@ -1,0 +1,10 @@
+<div>
+	<div class="panel panel-default no-padding no-margin container-height-100">
+		<div class="panel-heading">
+			<h3 class="panel-title">Filter Panel</h3>
+		</div>
+		<div class="panel-body panel-body-height minHeightWidth">
+			<input type="text" class="form-control" ng-model="dashboard.dateOptions.todayDate" date-options="dashboard.dateOptions" custom-datepicker ng-change="dashboard.setFilter({key:'date',value:dashboard.dateOptions.todayDate});dashboard.getData();"/>
+		</div>
+	</div>
+<div>

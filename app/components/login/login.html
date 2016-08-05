@@ -1,0 +1,174 @@
+<div class="container">
+    <div id="loginbox" ng-show="login.showLoginBox"
+         class="mainbox loginbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign In</div>
+            </div>
+
+            <div class="panel-body login-panel-body">
+
+                <div ng-show="login.invalid" class="login-alert alert alert-danger col-sm-12">Please enter valid
+                    credentials.
+                </div>
+
+                <form id="loginForm" name="loginForm" class="form-horizontal" role="form" novalidate>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="login-username" type="text" ng-model="login.username" class="form-control"
+                               name="username" value="" placeholder="username" required>
+                    </div>
+                    <div class="error error-space" ng-show="loginForm.username.$dirty && loginForm.username.$invalid">
+                        <small class="error" ng-show="loginForm.username.$error.required">
+                            {{login.invalidUsernameMsg}}
+                        </small>
+                    </div>
+
+                    <div class="input-group input-group-space">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="login-password" type="password" ng-model="login.password" class="form-control"
+                               name="password" placeholder="password" required>
+                    </div>
+
+                    <div class="error error-space" ng-show="loginForm.password.$dirty && loginForm.password.$invalid">
+                        <small class="error" ng-show="loginForm.password.$error.required">
+                            {{login.invalidPasswordMsg}}
+                        </small>
+                    </div>
+
+                    <div class="form-group input-group-space">
+                        <div class="col-sm-12 controls">
+                            <button id="btn-login" ng-disabled="loginForm.$invalid" class="btn btn-success"
+                                    ng-click="login.doLogin();">Login
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                Don't have an account!
+                                <a ng-click="login.toggleSigninBox('signup');" class="signupLink">
+                                    Sign Up Here
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <a ng-click="login.showForgotPassword= true" class="signupLink">
+                                Forgot Password
+                            </a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div ng-if="login.showForgotPassword" class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Forgot Password</div>
+            </div>
+
+            <div class="panel-body">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text" ng-model="login.username" class="form-control"
+                           name="username" value="" placeholder="Enter user name" required>
+                </div>
+
+                <div class="form-group input-group-space">
+                    <div class="col-sm-12 controls">
+                        <button id="btn-forgot-password" class="btn btn-success" ng-click="login.resetPassword();">Reset Password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="signupBox" ng-show="login.showSignupBox"
+         class="mainbox signupBox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign Up</div>
+                <div class="signinLink"><a id="signinLink" ng-click="login.toggleSigninBox('signin');">Sign In</a></div>
+            </div>
+            <div class="panel-body">
+
+                <div ng-show="login.invalidSignup" class="login-alert alert alert-danger col-sm-12">Please enter valid
+                    information.
+                </div>
+
+                <form id="signupForm" name="signupForm" class="form-horizontal" role="form" novalidate>
+
+                    <div class="form-group">
+                        <label for="firstname" class="col-md-3 control-label">First Name</label>
+
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" ng-model="login.signupFName" name="firstname"
+                                   placeholder="First Name" required>
+                        </div>
+                        <div class="error error-space"
+                             ng-show="signupForm.firstname.$dirty && signupForm.firstname.$invalid">
+                            <small class="error signup-error" ng-show="signupForm.firstname.$error.required">
+                                {{login.invalidFnameMsg}}
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastname" class="col-md-3 control-label">Last Name</label>
+
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" ng-model="login.signupLName" name="lastname"
+                                   placeholder="Last Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username" class="col-md-3 control-label">User Name</label>
+
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" ng-model="login.signupUName" name="sUsername"
+                                   placeholder="username" required>
+                        </div>
+                        <div class="error error-space"
+                             ng-show="signupForm.sUsername.$dirty && signupForm.sUsername.$invalid">
+                            <small class="error signup-error" ng-show="signupForm.sUsername.$error.required">
+                                {{login.invalidSUsernameMsg}}
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="col-md-3 control-label">Password</label>
+
+                        <div class="col-md-9">
+                            <input type="password" class="form-control" ng-model="login.signupPassword" name="passwd"
+                                   placeholder="Password" required>
+                        </div>
+                        <div class="error error-space" ng-show="signupForm.passwd.$dirty && signupForm.passwd.$invalid">
+                            <small class="error signup-error" ng-show="signupForm.passwd.$error.required">
+                                {{login.invalidSPasswordMsg}}
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Button -->
+                        <div class="col-md-offset-3 col-md-9">
+                            <button id="btn-Signup" ng-disabled="signupForm.$invalid" class="btn btn-success"
+                                    ng-click="login.doRegistration();">Signup
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>

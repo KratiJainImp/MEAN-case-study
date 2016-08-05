@@ -1,0 +1,28 @@
+<div class="modal-header add-proj-modal panel-primary">
+    <h4 class="modal-title" ng-if="!addProjectCtrl.isEditMode">Add New Project</h4>
+    <h4 class="modal-title" ng-if="addProjectCtrl.isEditMode">Edit Project - {{addProjectCtrl.projectTitle}}</h4>
+</div>
+<div class="modal-body">
+    <form name="addNewProj" class="add-proj-form" novalidate>
+
+        <p class="form-title">Title</p>
+        <input type="text"placeholder="Project description" ng-model="addProjectCtrl.projectBoard.projectTitle" class="col-lg-12" required>
+
+        <p class="form-title">Description</p>
+        <textarea placeholder="Project description" ng-model="addProjectCtrl.projectBoard.projectDesc" class="col-lg-12"></textarea>
+
+        <p class="form-title">Team</p>
+
+        <span ng-repeat="user in addProjectCtrl.userArray" class="proj-team">
+            <input type="checkbox" ng-model="user.isChecked" ng-checked="addProjectCtrl.projectBoard.projectTeam.includes(user.username)">
+            <span>{{user.username}}</span>
+        </span>
+</div>
+
+    </form>
+</div>
+<div class="modal-footer">
+    <!--TODO: disable button  -->
+    <button class="btn btn-primary" type="button" ng-click="addProjectCtrl.saveProjectBoard()" ng-disabled="addNewProj.$invalid">Add Board</button>
+    <button class="btn btn-warning" type="button" ng-click="addProjectCtrl.cancel()">Cancel</button>
+</div>

@@ -1,0 +1,63 @@
+<section class="container ng-scope">
+    <div class="panel panel-primary status-dashboard">
+        <div class="panel-heading"><h3 class="panel-title">Status Dashboard</h3></div>
+        <div class="panel-body ">
+
+            <div>
+                <h3><span class="label" style="color: black">Status Report - {{statusDashboardCtrl.currentStatusObj.date}}
+                </span></h3>
+            </div>
+
+
+            <div class="col-lg-10 pull-left">
+                <table class="status-table col-lg-12 pull-left table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Today</th>
+                        <th>Tomorrow</th>
+                        <th>Impediments</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="status in statusDashboardCtrl.currentStatusObj.singleDateStatusArray track by $index">
+                        <td><a href="#" editable-text="status.name">{{ status.name || 'empty' }}</a></td>{{status}}
+                        <td><a href="#" editable-textarea="status.todayStatus" e-rows="7" e-cols="30">{{ status.todayStatus || 'empty' }}</a></td>
+                        <td><a href="#" editable-textarea="status.tomorrowStatus" e-rows="7" e-cols="30">{{ status.tomorrowStatus || 'empty' }}</a>
+                        </td>
+                        <td><a href="#" editable-text="status.impediments">{{ status.impediments || 'empty' }}</a></td>
+                    </tr>
+
+                    <tr ng-if="statusDashboardCtrl.ifAddRow" class="add-status-row">
+                            <td><input type="text" name="statusName" ng-model="statusDashboardCtrl.newStatusRow.name" required></td>
+                            <td><input type="text" ng-model="statusDashboardCtrl.newStatusRow.todayStatus"></td>
+                            <td><input type="text" ng-model="statusDashboardCtrl.newStatusRow.tomorrowStatus"></td>
+                            <td><input type="text" ng-model="statusDashboardCtrl.newStatusRow.impediments"></td>
+                        <!-- <td class="add-status-row-btn" ng-click="statusDashboardCtrl.addStatusRow()">+</td> TODO: to be removed-->
+                    </tr>
+                    </tbody>
+                </table>
+                <span class="add-status-row-link" ng-if="!statusDashboardCtrl.ifAddRow"
+                      ng-click="statusDashboardCtrl.ifAddRow=true"><u>Add row</u></span>
+
+                <span class="add-status-row-link" ng-if="statusDashboardCtrl.ifAddRow"
+                      ng-click="statusDashboardCtrl.ifAddRow=false ;statusDashboardCtrl.addStatusRow()">Save row {{ttt.$invalid}}</span>
+
+
+                <button class="btn btn-primary pull-left" type="button"
+                        ng-click="statusDashboardCtrl.saveStatusChange()"
+                <!--ng-disabled="addStatusCtrl.statusArray.length ==0"-->Save Changes</button>
+                <button class="btn btn-warning pull-left" type="button" style="margin-left: 5px;"
+                        ng-click="statusDashboardCtrl.discardStatusChange()">Discard Changes
+                </button>
+            </div>
+            <div class="status-list col-lg-2 pull-left">
+                <div class="col-lg-12 status-board" ng-click="statusDashboardCtrl.openStatusBoard(statusBoard,$index)"
+                     ng-repeat="statusBoard in statusDashboardCtrl.statusBoardArray">
+                    <span src="images/add1.jpg" style="">{{statusBoard.date}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

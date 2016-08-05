@@ -1,0 +1,47 @@
+<section ng-init="dashboard.init()" class="cos-xs-12 col-md-6 display-border container-height-footer no-padding">
+	<div id="usZipMapSection" class="display-border container-height-100">
+		<div class="panel panel-default no-padding no-margin container-height-100">
+			<div class="panel-heading">
+				<h3 class="panel-title">Bar Chart</h3>
+			</div>
+			<div class="panel-body panel-body-height minHeightWidth">
+				<div class="loading" ng-show="dashboard.treeLoader1">
+					<img alt="" src="images/loading.gif">
+				</div>
+				<bar-chart
+						 data = "dashboard.data1"
+						 x = "label"
+						 y = "value"
+						 tooltips = "true"
+						 showxaxis = "true"
+						 showyaxis = "true"
+						 color = "dashboard.color"
+						 margin = "dashboard.margin">
+					</bar-chart>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="cos-xs-12 col-md-6 display-border container-height-footer no-padding">
+	<div id="usZipMapSection1" class="display-border container-height-100">
+		<div class="panel panel-default no-padding no-margin container-height-100">
+			<div class="panel-heading">
+				<h3 class="panel-title">Pie Chart</h3>
+			</div>
+			<div class="panel-body panel-body-height minHeightWidth">
+				<div class="loading" ng-show="dashboard.treeLoader2">
+					<img alt="" src="images/loading.gif">
+				</div>
+				<pie-chart
+						 data = "dashboard.data2"
+						  x = "label"
+						 y = "value"
+						 color = "dashboard.color"
+						 tooltips = "true"
+						 donut = "false">
+					</pie-chart>
+			</div>
+		</div>
+	</div>
+</section>
+<footer class="cos-xs-12 footer no-mar-bottom display-border" ng-include="'app/shared/partials/footer.html'"></footer>
